@@ -1,0 +1,12 @@
+.main {
+  background-color: #fed;
+  border: 1px solid #666;
+  font-weight: 300;
+  font-style: oblique;
+  font-size: 2rem;
+  color: #888;
+}
+
+.main p {
+  padding-left: 40px;
+}
