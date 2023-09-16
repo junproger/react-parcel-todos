@@ -1,0 +1,32 @@
+.join {
+  background-color: #fed;
+  padding: 20px 40px;
+}
+
+.input {
+  width: 100%;
+  height: 48px;
+  background-color: #fed;
+  padding-left: 4px;
+  font-size: 1.5rem;
+  font-weight: 300;
+  font-style: oblique;
+  color: #888;
+  outline: none;
+  border: none;
+}
+
+.input::-webkit-input-placeholder,
+.input::-moz-placeholder,
+.input::placeholder {
+  font-size: 1.5rem;
+  font-weight: inherit;
+  font-style: oblique;
+  text-decoration: none;
+  color: #888;
+  opacity: 0.5;
+}
+
+input:focus {
+  outline: 2px solid magenta;
+}
