@@ -11,6 +11,7 @@ export const Join: FC = () => {
         type="text"
         value={getValue}
         className={styles['input']}
+        aria-label="What needs to be done?"
         placeholder="What needs to be done?"
         onChange={(e): void => setValue(e.target.value)}
       />
