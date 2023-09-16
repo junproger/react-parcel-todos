@@ -1,0 +1,14 @@
+.control {
+  height: 52px;
+  background-color: #fed;
+  border-top: 1px solid #666;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1rem;
+  color: #666;
+}
+
+.control p {
+  height: 20px;
+  padding-left: 44px;
+}
