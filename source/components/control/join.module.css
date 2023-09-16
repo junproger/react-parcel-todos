@@ -28,6 +28,6 @@
   opacity: 0.5;
 }
 
-input:focus {
+.input:focus {
   outline: 2px solid magenta;
 }
