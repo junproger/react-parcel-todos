@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import styles from './item.module.css';
+import * as styles from './item.module.css';
 
 import { ITodo } from '../../types/ITodo';
 

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import styles from './control.module.css';
+import * as styles from './control.module.css';
 
 import { ITodo } from '../../types/ITodo';
 import { calc } from '../../utils/calc';

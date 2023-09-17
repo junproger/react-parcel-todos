@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 
-import styles from './main.module.css';
+import * as styles from './main.module.css';
 
 import { Join } from '../control/Join';
 import { Control } from '../control/Control';

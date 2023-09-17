@@ -1,6 +1,6 @@
 import { FC, KeyboardEvent, useState } from 'react';
 
-import styles from './join.module.css';
+import * as styles from './join.module.css';
 
 interface JoinProp {
   callback: (value: string) => void;

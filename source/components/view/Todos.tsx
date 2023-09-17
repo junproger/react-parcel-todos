@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import styles from './todos.module.css';
+import * as styles from './todos.module.css';
 
 import { ITodo } from '../../types/ITodo';
 import { Item } from '../control/Item';
