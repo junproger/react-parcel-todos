@@ -28,7 +28,7 @@ export const Main: FC = () => {
   return (
     <main className={styles['main']}>
       <Join callback={addTodo} />
-      <Todos />
+      <Todos todos={getTodos} />
       <Control />
     </main>
   );
