@@ -12,10 +12,11 @@ interface ItemProp {
 export const Item: FC<ItemProp> = ({ todo, checking }) => {
   return (
     <div className={styles['item']}>
-      <label>
+      <label className={todo.complete ? styles['completed'] : styles['active']}>
         <input type="checkbox" checked={todo.complete} onChange={(): void => checking(todo.id)} />
         {todo.todo}
       </label>
+      {todo.complete ? <span>❌</span> : null}
     </div>
   );
 };
