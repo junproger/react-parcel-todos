@@ -23,10 +23,23 @@ export const Main: FC = () => {
       ];
     });
   };
+  const checkTodo = (id: string): void => {
+    setTodos((prev) => {
+      return prev.map((todo) => {
+        if (todo.id !== id) {
+          return todo;
+        }
+        return {
+          ...todo,
+          complete: !todo.complete,
+        };
+      });
+    });
+  };
   return (
     <main className={styles['main']}>
       <Join callback={addTodo} />
-      <Todos todos={getTodos} />
+      <Todos todos={getTodos} checking={checkTodo} />
       <Control todos={getTodos} />
     </main>
   );
