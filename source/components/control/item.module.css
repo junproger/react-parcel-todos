@@ -1,0 +1,21 @@
+.item {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.item label {
+  margin: 15px 0;
+}
+
+.item input[type="checkbox"] {
+  margin-right: 30px;
+}
+
+.item label:hover {
+  cursor: pointer;
+}
+
+.item input[type="checkbox"]:hover {
+  cursor: pointer;
+}

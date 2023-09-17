@@ -3,8 +3,5 @@
   font-weight: 400;
   font-style: normal;
   color: #888;
-}
-
-.todos p {
-  padding-left: 44px;
+  padding: 0 44px;
 }
