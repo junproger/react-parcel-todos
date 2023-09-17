@@ -7,14 +7,14 @@
 .input {
   width: 100%;
   height: 48px;
-  background-color: #fed;
-  padding-left: 4px;
+  background-color: #fff;
+  padding-left: 10px;
   font-size: 1.5rem;
   font-weight: 300;
   font-style: oblique;
   color: #888;
   outline: none;
-  border: 1px solid #ccc;
+  border: 1px solid #888;
 }
 
 .input::-webkit-input-placeholder,
