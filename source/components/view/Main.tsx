@@ -36,10 +36,15 @@ export const Main: FC = () => {
       });
     });
   };
+  const delTodo = (id: string): void => {
+    setTodos((prev) => {
+      return prev.filter((todo) => todo.id !== id);
+    });
+  };
   return (
     <main className={styles['main']}>
       <Join callback={addTodo} />
-      <Todos todos={getTodos} checking={checkTodo} />
+      <Todos todos={getTodos} checking={checkTodo} deletion={delTodo} />
       <Control todos={getTodos} />
     </main>
   );

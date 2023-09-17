@@ -8,13 +8,14 @@ import { Item } from '../control/Item';
 interface TodosProp {
   todos: ITodo[];
   checking: (id: string) => void;
+  deletion: (id: string) => void;
 }
 
-export const Todos: FC<TodosProp> = ({ todos, checking }) => {
+export const Todos: FC<TodosProp> = ({ todos, checking, deletion }) => {
   return (
     <div className={styles['todos']}>
       {todos.length ? (
-        todos.map((todo) => <Item key={todo.id} todo={todo} checking={checking} />)
+        todos.map((todo) => <Item key={todo.id} todo={todo} checking={checking} deletion={deletion} />)
       ) : (
         <p>No todos jet... </p>
       )}
