@@ -17,9 +17,12 @@
   vertical-align: middle;
 }
 
-.item span {
+.item button {
+  background-color: transparent;
+  padding-inline: 1px;
   font-size: 2rem;
   opacity: 0.5;
+  border: none;
 }
 
 .item label:hover {
@@ -30,7 +33,7 @@
   cursor: pointer;
 }
 
-.item span:hover {
+.item button:hover {
   cursor: pointer;
 }
 

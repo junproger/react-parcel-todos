@@ -17,7 +17,11 @@ export const Item: FC<ItemProp> = ({ todo, checking, deletion }) => {
         <input type="checkbox" checked={todo.complete} onChange={(): void => checking(todo.id)} />
         {todo.todo}
       </label>
-      {todo.complete ? <span onClick={(): void => deletion(todo.id)}>❌</span> : null}
+      {todo.complete ? (
+        <button type="button" disabled={!todo.complete} onClick={(): void => deletion(todo.id)}>
+          ❌
+        </button>
+      ) : null}
     </div>
   );
 };
