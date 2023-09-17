@@ -10,7 +10,7 @@
   line-height: 2rem;
 }
 
-.item input[type="checkbox"] {
+.item input[type='checkbox'] {
   width: 2rem;
   height: 2rem;
   margin-right: 30px;
@@ -29,7 +29,7 @@
   cursor: pointer;
 }
 
-.item input[type="checkbox"]:hover {
+.item input[type='checkbox']:hover {
   cursor: pointer;
 }
 
