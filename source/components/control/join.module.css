@@ -14,7 +14,7 @@
   font-style: oblique;
   color: #888;
   outline: none;
-  border: none;
+  border: 1px solid #ccc;
 }
 
 .input::-webkit-input-placeholder,
@@ -30,4 +30,5 @@
 
 .input:focus {
   outline: 2px solid magenta;
+  border: none;
 }
