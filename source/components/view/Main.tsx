@@ -22,8 +22,6 @@ export const Main: FC = () => {
         },
       ];
     });
-    // eslint-disable-next-line no-console
-    return console.log(getTodos);
   };
   return (
     <main className={styles['main']}>
