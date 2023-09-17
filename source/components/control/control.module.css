@@ -1,14 +1,23 @@
 .control {
   height: 52px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: start;
+  gap: 20px;
   background-color: #fed;
   border-top: 1px solid #666;
   font-weight: 400;
   font-style: normal;
   font-size: 1rem;
   color: #666;
+  padding: 22px 44px;
 }
 
 .control p {
   height: 20px;
-  padding-left: 44px;
+}
+
+.clear {
+  margin-left: auto;
 }
