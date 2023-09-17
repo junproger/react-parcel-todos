@@ -17,7 +17,7 @@ export const Todos: FC<TodosProp> = ({ todos, checking, deletion }) => {
       {todos.length ? (
         todos.map((todo) => <Item key={todo.id} todo={todo} checking={checking} deletion={deletion} />)
       ) : (
-        <p>No todos jet... </p>
+        <p>You don&apos;t have todos... </p>
       )}
     </div>
   );
