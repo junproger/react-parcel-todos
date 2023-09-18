@@ -14,8 +14,15 @@
   padding: 22px 44px;
 }
 
-.control p {
-  height: 20px;
+.control button {
+  background-color: transparent;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.control button:hover {
+  cursor: pointer;
 }
 
 .clear {
