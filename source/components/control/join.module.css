@@ -14,7 +14,7 @@
   font-style: oblique;
   color: #888;
   outline: none;
-  border: 1px solid #888;
+  border: 1px solid #aaa;
 }
 
 .input::-webkit-input-placeholder,
