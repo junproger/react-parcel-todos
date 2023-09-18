@@ -5,7 +5,7 @@ import * as styles from './todos.module.css';
 import { ITodo } from '../../types/ITodo';
 import { Item } from '../control/Item';
 
-interface TodosProp {
+export interface TodosProp {
   todos: ITodo[];
   checking: (id: string) => void;
   deletion: (id: string) => void;

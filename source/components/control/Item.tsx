@@ -4,7 +4,7 @@ import * as styles from './item.module.css';
 
 import { ITodo } from '../../types/ITodo';
 
-interface ItemProp {
+export interface ItemProp {
   todo: ITodo;
   checking: (id: string) => void;
   deletion: (id: string) => void;
