@@ -44,11 +44,16 @@ export const Main: FC = () => {
     });
   };
   const filterTodos = (arg: Filter): void => setFilter(arg);
+  const clearTodo = (): void => {
+    setTodos((prev) => {
+      return prev.filter((todo) => todo.complete !== true);
+    });
+  };
   return (
     <main className={styles['main']}>
       <Join callback={addTodo} />
       <Todos todos={getTodos} filter={getFilter} checking={checkTodo} deletion={delTodo} />
-      <Control todos={getTodos} callback={filterTodos} />
+      <Control todos={getTodos} callback={filterTodos} clearing={clearTodo} />
     </main>
   );
 };
