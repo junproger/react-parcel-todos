@@ -24,7 +24,7 @@ export const Todos: FC<TodosProp> = ({ todos, filter, checking, deletion }) => {
   });
   return (
     <div className={styles['todos']}>
-      {todos.length ? (
+      {filteredTodo.length ? (
         filteredTodo.map((todo) => <Item key={todo.id} todo={todo} checking={checking} deletion={deletion} />)
       ) : (
         <p>You don&apos;t have todos... </p>
