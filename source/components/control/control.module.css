@@ -14,17 +14,29 @@
   padding: 22px 44px;
 }
 
-.control button {
+.button {
   background-color: transparent;
   border: 1px solid #aaa;
   border-radius: 5px;
   padding: 5px;
 }
 
-.control button:hover {
+.button:hover,
+.active:hover {
   cursor: pointer;
 }
 
+.active {
+  background-color: #fcd;
+  border: 2px solid lightpink;
+  border-radius: 5px;
+  padding: 5px;
+}
+
 .clear {
+  background-color: transparent;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  padding: 5px;
   margin-left: auto;
 }

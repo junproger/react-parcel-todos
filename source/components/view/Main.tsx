@@ -53,7 +53,7 @@ export const Main: FC = () => {
     <main className={styles['main']}>
       <Join callback={addTodo} />
       <Todos todos={getTodos} filter={getFilter} checking={checkTodo} deletion={delTodo} />
-      <Control todos={getTodos} callback={filterTodos} clearing={clearTodo} />
+      <Control todos={getTodos} filter={getFilter} callback={filterTodos} clearing={clearTodo} />
     </main>
   );
 };
