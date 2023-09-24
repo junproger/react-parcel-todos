@@ -1,31 +1,15 @@
-import { ChangeEvent, FC, KeyboardEvent, useState } from 'react';
+import { FC } from 'react';
 
 import * as styles from './join.module.css';
+
+import { useJoinTodo } from '../hooks/useJoinTodo';
 
 export interface JoinProp {
   callback: (value: string) => void;
 }
 
 export const Join: FC<JoinProp> = ({ callback }) => {
-  const [getValue, setValue] = useState('');
-  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>): void => {
-    const value = e.target.value;
-    if (value.trim()) {
-      setValue(value);
-    }
-    if (!value.trim()) {
-      setValue('');
-    }
-  };
-  const keyDownHandler = (e: KeyboardEvent<HTMLInputElement>): void => {
-    if (e.key === 'Enter' && getValue.trim()) {
-      callback(getValue.trim());
-      setValue('');
-    }
-    if (!getValue.trim()) {
-      setValue('');
-    }
-  };
+  const { getValue, onChangeHandler, keyDownHandler } = useJoinTodo(callback);
   return (
     <div className={styles['join']}>
       <input
