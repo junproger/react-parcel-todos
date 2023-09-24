@@ -5,14 +5,14 @@ import * as styles from './main.module.css';
 import { Join } from '../control/Join';
 import { Control } from '../control/Control';
 import { Todos } from '../view/Todos';
+import { useFilterTodo } from '../hooks/useFilterTodo';
 
 import { ITodo } from '../../types/ITodo';
-import { Filter } from '../../types/Filter';
 import { idkey } from '../../helpers/idkey';
 
 export const Main: FC = () => {
   const [getTodos, setTodos] = useState<ITodo[]>([]);
-  const [getFilter, setFilter] = useState<Filter>(Filter.total);
+  const { getFilter, filterTodos, filteredTodo } = useFilterTodo(getTodos);
   const addTodo = (value: string): void => {
     setTodos((prev) => {
       return [
@@ -43,7 +43,6 @@ export const Main: FC = () => {
       return prev.filter((todo) => todo.id !== id);
     });
   };
-  const filterTodos = (arg: Filter): void => setFilter(arg);
   const clearTodo = (): void => {
     setTodos((prev) => {
       return prev.filter((todo) => todo.complete !== true);
@@ -52,7 +51,7 @@ export const Main: FC = () => {
   return (
     <main className={styles['main']}>
       <Join callback={addTodo} />
-      <Todos todos={getTodos} filter={getFilter} checking={checkTodo} deletion={delTodo} />
+      <Todos filtered={filteredTodo} checking={checkTodo} deletion={delTodo} />
       <Control todos={getTodos} filter={getFilter} callback={filterTodos} clearing={clearTodo} />
     </main>
   );
