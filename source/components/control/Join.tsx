@@ -1,8 +1,8 @@
 import { FC } from 'react';
 
-import * as styles from './join.module.css';
-
 import { useJoinTodo } from '../hooks/useJoinTodo';
+
+import * as styles from './join.module.css';
 
 export interface JoinProp {
   callback: (value: string) => void;

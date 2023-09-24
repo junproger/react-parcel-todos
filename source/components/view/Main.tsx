@@ -1,11 +1,12 @@
 import { FC, useState } from 'react';
 
+import { useFilterTodo } from '../hooks/useFilterTodo';
+
 import * as styles from './main.module.css';
 
 import { Join } from '../control/Join';
 import { Control } from '../control/Control';
 import { Todos } from '../view/Todos';
-import { useFilterTodo } from '../hooks/useFilterTodo';
 
 import { ITodo } from '../../types/ITodo';
 import { idkey } from '../../helpers/idkey';
