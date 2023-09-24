@@ -14,11 +14,23 @@ export const Item: FC<ItemProp> = ({ todo, checking, deletion }) => {
   return (
     <div className={styles['item']}>
       <label className={todo.complete ? styles['completed'] : styles['active']}>
-        <input type="checkbox" name="complete" checked={todo.complete} onChange={(): void => checking(todo.id)} />
+        <input
+          type="checkbox"
+          name="complete"
+          aria-label="todo complete"
+          checked={todo.complete}
+          onChange={(): void => checking(todo.id)}
+        />
         {todo.todo}
       </label>
       {todo.complete ? (
-        <button type="button" disabled={!todo.complete} onClick={(): void => deletion(todo.id)}>
+        <button
+          type="button"
+          name="delete"
+          aria-label="delete todo"
+          disabled={!todo.complete}
+          onClick={(): void => deletion(todo.id)}
+        >
           ❌
         </button>
       ) : null}
