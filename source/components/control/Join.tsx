@@ -15,6 +15,7 @@ export const Join: FC<JoinProp> = ({ callback }) => {
       <input
         autoFocus
         type="text"
+        name="jointodo"
         value={getValue}
         className={styles['input']}
         aria-label="What needs to be done?"

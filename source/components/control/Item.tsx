@@ -14,7 +14,7 @@ export const Item: FC<ItemProp> = ({ todo, checking, deletion }) => {
   return (
     <div className={styles['item']}>
       <label className={todo.complete ? styles['completed'] : styles['active']}>
-        <input type="checkbox" checked={todo.complete} onChange={(): void => checking(todo.id)} />
+        <input type="checkbox" name="complete" checked={todo.complete} onChange={(): void => checking(todo.id)} />
         {todo.todo}
       </label>
       {todo.complete ? (
