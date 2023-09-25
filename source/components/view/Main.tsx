@@ -13,7 +13,7 @@ import { idkey } from '../../helpers/idkey';
 
 export const Main: FC = () => {
   const [getTodos, setTodos] = useState<ITodo[]>([]);
-  const { getFilter, filterTodos, filteredTodo } = useFilterTodo(getTodos);
+  const { getFilter, filterTodos, filteredTodo, todosLength } = useFilterTodo(getTodos);
   const addTodo = (value: string): void => {
     setTodos((prev) => {
       return [
@@ -53,7 +53,7 @@ export const Main: FC = () => {
     <main className={styles['main']}>
       <Join callback={addTodo} />
       <Todos filtered={filteredTodo} checking={checkTodo} deletion={delTodo} />
-      <Control todos={getTodos} filter={getFilter} callback={filterTodos} clearing={clearTodo} />
+      <Control filter={getFilter} todosnum={todosLength} callback={filterTodos} clearing={clearTodo} />
     </main>
   );
 };
