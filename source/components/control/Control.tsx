@@ -21,6 +21,7 @@ export const Control: FC<ControlProp> = ({ callback, clearing, todosnum, filter 
       <Button
         disabled={!todosnum.total}
         csstyles={filter === Filter.total ? 'active' : 'button'}
+        arialabel={Filter.total}
         callback={(): void => callback(Filter.total)}
       >
         Total: {todosnum.total}
@@ -28,6 +29,7 @@ export const Control: FC<ControlProp> = ({ callback, clearing, todosnum, filter 
       <Button
         disabled={!todosnum.active}
         csstyles={filter === Filter.active ? 'active' : 'button'}
+        arialabel={Filter.active}
         callback={(): void => callback(Filter.active)}
       >
         Active: {todosnum.active}
@@ -35,11 +37,12 @@ export const Control: FC<ControlProp> = ({ callback, clearing, todosnum, filter 
       <Button
         disabled={!todosnum.completed}
         csstyles={filter === Filter.completed ? 'active' : 'button'}
+        arialabel={Filter.completed}
         callback={(): void => callback(Filter.completed)}
       >
         Completed: {todosnum.completed}
       </Button>
-      <Button disabled={!todosnum.completed} csstyles={'clear'} callback={clearing}>
+      <Button disabled={!todosnum.completed} csstyles={'clear'} arialabel="Clear completed" callback={clearing}>
         Clear completed
       </Button>
     </div>
