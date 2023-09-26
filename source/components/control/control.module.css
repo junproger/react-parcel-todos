@@ -13,31 +13,3 @@
   color: #666;
   padding: 11px 44px;
 }
-
-.button {
-  background-color: transparent;
-  border: 1px solid #aaa;
-  border-radius: 5px;
-  padding: 5px;
-}
-
-.active {
-  background-color: #fde;
-  border: 2px solid lightpink;
-  border-radius: 5px;
-  padding: 5px;
-}
-
-.clear {
-  background-color: transparent;
-  border: 1px solid #aaa;
-  border-radius: 5px;
-  padding: 5px;
-  margin-left: auto;
-}
-
-.button:hover,
-.active:hover,
-.clear:hover {
-  cursor: pointer;
-}

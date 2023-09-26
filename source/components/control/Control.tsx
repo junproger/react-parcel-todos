@@ -6,6 +6,8 @@ import { TodosLength } from '../hooks/useFilterTodo';
 
 import { Filter } from '../../types/Filter';
 
+import { Button } from '../shared/Button';
+
 export interface ControlProp {
   callback: (arg: Filter) => void;
   clearing: () => void;
@@ -16,30 +18,30 @@ export interface ControlProp {
 export const Control: FC<ControlProp> = ({ callback, clearing, todosnum, filter }) => {
   return (
     <div className={styles['control']}>
-      <button
-        className={filter === Filter.total ? styles['active'] : styles['button']}
+      <Button
         disabled={!todosnum.total}
-        onClick={(): void => callback(Filter.total)}
+        csstyles={filter === Filter.total ? 'active' : 'button'}
+        callback={(): void => callback(Filter.total)}
       >
         Total: {todosnum.total}
-      </button>
-      <button
-        className={filter === Filter.active ? styles['active'] : styles['button']}
+      </Button>
+      <Button
         disabled={!todosnum.active}
-        onClick={(): void => callback(Filter.active)}
+        csstyles={filter === Filter.active ? 'active' : 'button'}
+        callback={(): void => callback(Filter.active)}
       >
         Active: {todosnum.active}
-      </button>
-      <button
-        className={filter === Filter.completed ? styles['active'] : styles['button']}
+      </Button>
+      <Button
         disabled={!todosnum.completed}
-        onClick={(): void => callback(Filter.completed)}
+        csstyles={filter === Filter.completed ? 'active' : 'button'}
+        callback={(): void => callback(Filter.completed)}
       >
         Completed: {todosnum.completed}
-      </button>
-      <button disabled={!todosnum.completed} className={styles['clear']} onClick={clearing}>
+      </Button>
+      <Button disabled={!todosnum.completed} csstyles={'clear'} callback={clearing}>
         Clear completed
-      </button>
+      </Button>
     </div>
   );
 };
