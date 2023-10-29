@@ -25,3 +25,9 @@
 .clear:hover {
   cursor: pointer;
 }
+
+.button:disabled,
+.active:disabled,
+.clear:disabled {
+  cursor: default;
+}
