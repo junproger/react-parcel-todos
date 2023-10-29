@@ -14,7 +14,7 @@ export interface TodosProp {
 export const Todos: FC<TodosProp> = ({ filtered, checking, deletion }) => {
   return (
     <div className={styles['todos']}>
-      {filtered.length ? (
+      {filtered.length > 0 ? (
         filtered.map((todo) => <Item key={todo.id} todo={todo} checking={checking} deletion={deletion} />)
       ) : (
         <p>You don&apos;t have todos... </p>
