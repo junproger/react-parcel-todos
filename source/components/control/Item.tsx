@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 
 import * as styles from './item.module.css';
 
@@ -12,7 +12,7 @@ export interface ItemProp {
   deletion: (id: string) => void;
 }
 
-export const Item: FC<ItemProp> = ({ todo, checking, deletion }) => {
+const memoItem: FC<ItemProp> = ({ todo, checking, deletion }) => {
   logging('TODO-ITEM is rendered', todo);
   return (
     <div className={styles['item']}>
@@ -40,3 +40,5 @@ export const Item: FC<ItemProp> = ({ todo, checking, deletion }) => {
     </div>
   );
 };
+
+export const Item = memo<ItemProp>(memoItem);
