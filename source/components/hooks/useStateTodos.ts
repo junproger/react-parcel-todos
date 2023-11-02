@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import { ITodo } from '../../types/ITodo';
 
@@ -26,24 +26,21 @@ export const useStateTodos = (): StateTodosReturn => {
       ];
     });
   };
-  const checkTodo = (id: string): void => {
-    setTodos((prev) => {
-      return prev.map((todo) => {
-        if (todo.id !== id) {
-          return todo;
+  const checkTodo = useCallback((id: string): void => {
+    setTodos((prev) =>
+      prev.map((todo) => {
+        if (todo.id === id) {
+          todo.complete = !todo.complete;
         }
-        return {
-          ...todo,
-          complete: !todo.complete,
-        };
-      });
-    });
-  };
-  const deleteTodo = (id: string): void => {
+        return todo;
+      })
+    );
+  }, []);
+  const deleteTodo = useCallback((id: string): void => {
     setTodos((prev) => {
       return prev.filter((todo) => todo.id !== id);
     });
-  };
+  }, []);
   const clearTodo = (): void => {
     setTodos((prev) => {
       return prev.filter((todo) => todo.complete !== true);
