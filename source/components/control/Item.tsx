@@ -4,6 +4,8 @@ import * as styles from './item.module.css';
 
 import { ITodo } from '../../types/ITodo';
 
+import { logging } from '../../utils/logging';
+
 export interface ItemProp {
   todo: ITodo;
   checking: (id: string) => void;
@@ -11,6 +13,7 @@ export interface ItemProp {
 }
 
 export const Item: FC<ItemProp> = ({ todo, checking, deletion }) => {
+  logging('TODO-ITEM is rendered', todo);
   return (
     <div className={styles['item']}>
       <label className={todo.complete ? styles['completed'] : styles['active']}>
