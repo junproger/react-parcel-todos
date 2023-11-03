@@ -1,34 +1,24 @@
-import { ChangeEvent, KeyboardEvent, useState } from 'react';
+import { KeyboardEvent, RefObject, useRef } from 'react';
 
 export interface JoinTodoReturn {
-  getValue: string;
-  onChangeHandler: (e: ChangeEvent<HTMLInputElement>) => void;
+  refInput: RefObject<HTMLInputElement>;
   keyDownHandler: (e: KeyboardEvent<HTMLInputElement>) => void;
 }
 
 export const useJoinTodo = (callback: (value: string) => void): JoinTodoReturn => {
-  const [getValue, setValue] = useState('');
-  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>): void => {
-    const value = e.target.value;
-    if (value.trim()) {
-      setValue(value);
+  const refInput = useRef<HTMLInputElement>(null);
+  const keyDownHandler = (e: KeyboardEvent<HTMLInputElement>): void => {
+    const value = refInput.current!.value;
+    if (e.key === 'Enter' && value.trim()) {
+      callback(value.trim());
+      refInput.current!.value = '';
     }
     if (!value.trim()) {
-      setValue('');
-    }
-  };
-  const keyDownHandler = (e: KeyboardEvent<HTMLInputElement>): void => {
-    if (e.key === 'Enter' && getValue.trim()) {
-      callback(getValue.trim());
-      setValue('');
-    }
-    if (!getValue.trim()) {
-      setValue('');
+      refInput.current!.value = '';
     }
   };
   return {
-    getValue,
-    onChangeHandler,
+    refInput,
     keyDownHandler,
   };
 };
