@@ -12,7 +12,7 @@ export interface ItemProp extends ITodo {
 }
 
 const memoItem: FC<ItemProp> = ({ id, todo, complete, checking, deletion }) => {
-  logging('TODO-ITEM is rendered', todo);
+  logging('TODO-ITEM is rendered', id);
   return (
     <div className={styles['item']}>
       <label className={complete ? styles['completed'] : styles['active']}>
