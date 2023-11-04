@@ -14,7 +14,7 @@ export interface StateTodosReturn {
 
 export const useStateTodos = (): StateTodosReturn => {
   const [getTodos, setTodos] = useState<ITodo[]>([]);
-  const joinTodo = (value: string): void => {
+  const joinTodo = useCallback((value: string): void => {
     setTodos((prev) =>
       prev.concat({
         id: idkey(value),
@@ -22,7 +22,7 @@ export const useStateTodos = (): StateTodosReturn => {
         complete: false,
       })
     );
-  };
+  }, []);
   const checkTodo = useCallback((id: string): void => {
     setTodos((prev) =>
       prev.map((todo) => {

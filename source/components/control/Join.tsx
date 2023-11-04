@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 
 import { useJoinTodo } from '../hooks/useJoinTodo';
 
@@ -10,7 +10,7 @@ export interface JoinProp {
   callback: (value: string) => void;
 }
 
-export const Join: FC<JoinProp> = ({ callback }) => {
+const memoJoin: FC<JoinProp> = ({ callback }) => {
   const { refInput, keyDownHandler } = useJoinTodo(callback);
   logging('JOIN-TODO is rendered');
   return (
@@ -29,3 +29,5 @@ export const Join: FC<JoinProp> = ({ callback }) => {
     </div>
   );
 };
+
+export const Join = memo(memoJoin);
