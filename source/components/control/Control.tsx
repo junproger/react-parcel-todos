@@ -8,6 +8,8 @@ import { Filter } from '../../types/Filter';
 
 import { Button } from '../shared/Button';
 
+import { logging } from '../../utils/logging';
+
 export interface ControlProp {
   callback: (arg: Filter) => void;
   clearing: () => void;
@@ -16,6 +18,7 @@ export interface ControlProp {
 }
 
 export const Control: FC<ControlProp> = ({ callback, clearing, todosnum, filter }) => {
+  logging('CONTROL is rendered');
   return (
     <div className={styles['control']}>
       <Button
