@@ -8,10 +8,11 @@ import { logging } from '../../utils/logging';
 
 export interface JoinProp {
   callback: (value: string) => void;
+  uniquely: (value: string) => boolean;
 }
 
-const memoJoin: FC<JoinProp> = ({ callback }) => {
-  const { refInput, keyDownHandler } = useJoinTodo(callback);
+const memoJoin: FC<JoinProp> = ({ callback, uniquely }) => {
+  const { refInput, keyDownHandler } = useJoinTodo(callback, uniquely);
   logging('JOIN-TODO is rendered');
   return (
     <div className={styles['join']}>

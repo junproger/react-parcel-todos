@@ -6,6 +6,7 @@ import { idkey } from '../../helpers/idkey';
 
 export interface StateTodosReturn {
   getTodos: ITodo[];
+  isUnique: (value: string) => boolean;
   joinTodo: (value: string) => void;
   checkTodo: (id: string) => void;
   deleteTodo: (id: string) => void;
@@ -14,6 +15,12 @@ export interface StateTodosReturn {
 
 export const useStateTodos = (): StateTodosReturn => {
   const [getTodos, setTodos] = useState<ITodo[]>([]);
+  const isUnique = (value: string): boolean => {
+    if (getTodos.some((todo) => todo.id === idkey(value))) {
+      return false;
+    }
+    return true;
+  };
   const joinTodo = useCallback((value: string): void => {
     setTodos((prev) =>
       prev.concat({
@@ -45,6 +52,7 @@ export const useStateTodos = (): StateTodosReturn => {
   };
   return {
     getTodos,
+    isUnique,
     joinTodo,
     checkTodo,
     deleteTodo,
