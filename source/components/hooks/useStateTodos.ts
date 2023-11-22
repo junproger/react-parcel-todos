@@ -1,14 +1,9 @@
 import { useCallback, useState } from 'react';
 
 import { ITodo } from '../../types/ITodo';
+import { TodosLength } from '../../types/ILength';
 
 import { idkey } from '../../helpers/idkey';
-
-export interface TodosLength {
-  total: number;
-  active: number;
-  completed: number;
-}
 
 export interface StateTodosReturn {
   getTodos: ITodo[];

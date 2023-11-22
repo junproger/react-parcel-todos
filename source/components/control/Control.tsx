@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import * as styles from './control.module.css';
 
-import { TodosLength } from '../hooks/useFilterTodo';
+import { TodosLength } from '../../types/ILength';
 
 import { Filter } from '../../types/Filter';
 
