@@ -9,7 +9,7 @@ export interface StateTodosReturn {
   joinTodo: (value: string) => void;
   checkTodo: (id: string) => void;
   deleteTodo: (id: string) => void;
-  clearTodo: () => void;
+  clearTodos: () => void;
 }
 
 export const useStateTodos = (): StateTodosReturn => {
@@ -39,16 +39,16 @@ export const useStateTodos = (): StateTodosReturn => {
       return prev.filter((todo) => todo.id !== id);
     });
   }, []);
-  const clearTodo = (): void => {
+  const clearTodos = useCallback((): void => {
     setTodos((prev) => {
       return prev.filter((todo) => todo.complete !== true);
     });
-  };
+  }, []);
   return {
     getTodos,
     joinTodo,
     checkTodo,
     deleteTodo,
-    clearTodo,
+    clearTodos,
   };
 };
