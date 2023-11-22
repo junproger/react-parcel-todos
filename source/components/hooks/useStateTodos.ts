@@ -1,13 +1,11 @@
 import { useCallback, useState } from 'react';
 
 import { ITodo } from '../../types/ITodo';
-import { TodosLength } from '../../types/ILength';
 
 import { idkey } from '../../helpers/idkey';
 
 export interface StateTodosReturn {
   getTodos: ITodo[];
-  todosLength: TodosLength;
   joinTodo: (value: string) => void;
   checkTodo: (id: string) => void;
   deleteTodo: (id: string) => void;
@@ -16,11 +14,6 @@ export interface StateTodosReturn {
 
 export const useStateTodos = (): StateTodosReturn => {
   const [getTodos, setTodos] = useState<ITodo[]>([]);
-  const todosLength: TodosLength = {
-    total: getTodos.length,
-    active: getTodos.filter((item) => item.complete === false).length,
-    completed: getTodos.filter((item) => item.complete === true).length,
-  };
   const joinTodo = useCallback((value: string): void => {
     setTodos((prev) =>
       prev.concat({
@@ -53,7 +46,6 @@ export const useStateTodos = (): StateTodosReturn => {
   };
   return {
     getTodos,
-    todosLength,
     joinTodo,
     checkTodo,
     deleteTodo,
