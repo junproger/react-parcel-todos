@@ -11,11 +11,11 @@ import { Control } from '../control/Control';
 import { Todos } from '../view/Todos';
 
 export const Main: FC = () => {
-  const { getTodos, isUnique, todosLength, joinTodo, checkTodo, deleteTodo, clearTodo } = useStateTodos();
+  const { getTodos, todosLength, joinTodo, checkTodo, deleteTodo, clearTodo } = useStateTodos();
   const { getFilter, filterTodos, filteredTodo } = useFilterTodo(getTodos);
   return (
     <main className={styles['main']}>
-      <Join callback={joinTodo} uniquely={isUnique} />
+      <Join callback={joinTodo} alltodos={getTodos} />
       <Todos filtered={filteredTodo} checking={checkTodo} deletion={deleteTodo} />
       <Control filter={getFilter} todosnum={todosLength} callback={filterTodos} clearing={clearTodo} />
     </main>

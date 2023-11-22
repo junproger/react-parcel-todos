@@ -12,7 +12,6 @@ export interface TodosLength {
 
 export interface StateTodosReturn {
   getTodos: ITodo[];
-  isUnique: (value: string) => boolean;
   todosLength: TodosLength;
   joinTodo: (value: string) => void;
   checkTodo: (id: string) => void;
@@ -22,12 +21,6 @@ export interface StateTodosReturn {
 
 export const useStateTodos = (): StateTodosReturn => {
   const [getTodos, setTodos] = useState<ITodo[]>([]);
-  const isUnique = (value: string): boolean => {
-    if (getTodos.some((todo) => todo.id === idkey(value))) {
-      return false;
-    }
-    return true;
-  };
   const todosLength: TodosLength = {
     total: getTodos.length,
     active: getTodos.filter((item) => item.complete === false).length,
@@ -65,7 +58,6 @@ export const useStateTodos = (): StateTodosReturn => {
   };
   return {
     getTodos,
-    isUnique,
     todosLength,
     joinTodo,
     checkTodo,
