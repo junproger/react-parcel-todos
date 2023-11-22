@@ -27,6 +27,7 @@ export const useStateTodos = (): StateTodosReturn => {
         id: idkey(value),
         todo: value,
         complete: false,
+        display: true,
       })
     );
   }, []);
