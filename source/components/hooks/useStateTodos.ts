@@ -4,9 +4,16 @@ import { ITodo } from '../../types/ITodo';
 
 import { idkey } from '../../helpers/idkey';
 
+export interface TodosLength {
+  total: number;
+  active: number;
+  completed: number;
+}
+
 export interface StateTodosReturn {
   getTodos: ITodo[];
   isUnique: (value: string) => boolean;
+  todosLength: TodosLength;
   joinTodo: (value: string) => void;
   checkTodo: (id: string) => void;
   deleteTodo: (id: string) => void;
@@ -20,6 +27,11 @@ export const useStateTodos = (): StateTodosReturn => {
       return false;
     }
     return true;
+  };
+  const todosLength: TodosLength = {
+    total: getTodos.length,
+    active: getTodos.filter((item) => item.complete === false).length,
+    completed: getTodos.filter((item) => item.complete === true).length,
   };
   const joinTodo = useCallback((value: string): void => {
     setTodos((prev) =>
@@ -54,6 +66,7 @@ export const useStateTodos = (): StateTodosReturn => {
   return {
     getTodos,
     isUnique,
+    todosLength,
     joinTodo,
     checkTodo,
     deleteTodo,

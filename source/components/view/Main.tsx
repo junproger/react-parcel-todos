@@ -11,8 +11,8 @@ import { Control } from '../control/Control';
 import { Todos } from '../view/Todos';
 
 export const Main: FC = () => {
-  const { getTodos, isUnique, joinTodo, checkTodo, deleteTodo, clearTodo } = useStateTodos();
-  const { getFilter, filterTodos, filteredTodo, todosLength } = useFilterTodo(getTodos);
+  const { getTodos, isUnique, todosLength, joinTodo, checkTodo, deleteTodo, clearTodo } = useStateTodos();
+  const { getFilter, filterTodos, filteredTodo } = useFilterTodo(getTodos);
   return (
     <main className={styles['main']}>
       <Join callback={joinTodo} uniquely={isUnique} />
