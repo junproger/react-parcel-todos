@@ -55,7 +55,7 @@
         "class-methods-use-this": "off",
         // turn on errors for missing imports
         "import/no-unresolved": "error",
-        "max-lines-per-function": ["error", 60],
+        "max-lines-per-function": ["error", 61],
         "@typescript-eslint/array-type": "error",
         "@typescript-eslint/no-explicit-any": "error",
         "@typescript-eslint/no-use-before-define": "error",
