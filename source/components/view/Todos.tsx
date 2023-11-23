@@ -6,16 +6,18 @@ import { ITodo } from '../../types/ITodo';
 import { Item } from '../control/Item';
 
 export interface TodosProp {
-  filtered: ITodo[];
+  alltodos: ITodo[];
   checking: (id: string) => void;
   deletion: (id: string) => void;
 }
 
-export const Todos: FC<TodosProp> = ({ filtered, checking, deletion }) => {
+export const Todos: FC<TodosProp> = ({ alltodos, checking, deletion }) => {
   return (
     <div className={styles['todos']}>
-      {filtered.length > 0 ? (
-        filtered.map((todo) => <Item key={todo.id} {...todo} checking={checking} deletion={deletion} />)
+      {alltodos.length > 0 ? (
+        alltodos
+          .filter((todo) => todo.display)
+          .map((todo) => <Item key={todo.id} {...todo} checking={checking} deletion={deletion} />)
       ) : (
         <p>You don&apos;t have todos... </p>
       )}

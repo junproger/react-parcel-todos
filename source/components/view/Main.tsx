@@ -1,7 +1,6 @@
 import { FC } from 'react';
 
 import { useStateTodos } from '../hooks/useStateTodos';
-import { useFilterTodo } from '../hooks/useFilterTodo';
 
 import { TodosLength } from '../../types/ILength';
 
@@ -13,8 +12,7 @@ import { Control } from '../control/Control';
 import { Todos } from '../view/Todos';
 
 export const Main: FC = () => {
-  const { getTodos, joinTodo, checkTodo, deleteTodo, clearTodos } = useStateTodos();
-  const { getFilter, filterTodos, filteredTodo } = useFilterTodo(getTodos);
+  const { getTodos, getFilter, joinTodo, checkTodo, filterTodo, deleteTodo, clearTodos } = useStateTodos();
   const todosLength: TodosLength = {
     total: getTodos.length,
     active: getTodos.filter((item) => item.complete === false).length,
@@ -23,8 +21,8 @@ export const Main: FC = () => {
   return (
     <main className={styles['main']}>
       <Join callback={joinTodo} alltodos={getTodos} />
-      <Todos filtered={filteredTodo} checking={checkTodo} deletion={deleteTodo} />
-      <Control filter={getFilter} todosnum={todosLength} callback={filterTodos} clearing={clearTodos} />
+      <Todos alltodos={getTodos} checking={checkTodo} deletion={deleteTodo} />
+      <Control filter={getFilter} todosnum={todosLength} filtering={filterTodo} clearing={clearTodos} />
     </main>
   );
 };
