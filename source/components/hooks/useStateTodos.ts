@@ -25,7 +25,7 @@ export const useStateTodos = (): StateTodosReturn => {
           id: idkey(value),
           todo: value,
           complete: false,
-          display: getFilter === Filter.completed ? false : true,
+          display: getFilter !== Filter.completed,
         })
       );
     },
