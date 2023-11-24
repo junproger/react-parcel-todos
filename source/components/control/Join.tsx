@@ -4,17 +4,15 @@ import { useJoinTodo } from '../hooks/useJoinTodo';
 
 import * as styles from './join.module.css';
 
-import { ITodo } from '../../types/ITodo';
-
 import { logging } from '../../utils/logging';
 
 export interface JoinProp {
   callback: (value: string) => void;
-  alltodos: ITodo[];
+  uniquely: (value: string) => boolean;
 }
 
-const memoJoin: FC<JoinProp> = ({ callback, alltodos }) => {
-  const { refInput, keyDownHandler } = useJoinTodo(callback, alltodos);
+const memoJoin: FC<JoinProp> = ({ callback, uniquely }) => {
+  const { refInput, keyDownHandler } = useJoinTodo(callback, uniquely);
   logging('JOIN-TODO is rendered');
   return (
     <div className={styles['join']}>
