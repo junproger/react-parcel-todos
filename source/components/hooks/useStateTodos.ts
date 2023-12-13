@@ -6,8 +6,7 @@ import { Filter } from '../../types/Filter';
 import { idkey } from '../../helpers/idkey';
 
 export interface StateTodosReturn {
-  getTodos: ITodo[];
-  getFilter: Filter;
+  getTodos: { filter: Filter; todos: ITodo[] };
   joinTodo: (value: string) => void;
   checkTodo: (id: string) => void;
   filterTodo: (filter: Filter) => void;
@@ -15,60 +14,71 @@ export interface StateTodosReturn {
   clearTodos: () => void;
 }
 
+export const initialState = { filter: Filter.total, todos: [] };
+
 export const useStateTodos = (): StateTodosReturn => {
-  const [getTodos, setTodos] = useState<ITodo[]>([]);
-  const [getFilter, setFilter] = useState<Filter>(Filter.total);
-  const joinTodo = useCallback(
-    (value: string): void => {
-      setTodos((prev) =>
-        prev.concat({
+  const [getTodos, setTodos] = useState<{ filter: Filter; todos: ITodo[] }>(initialState);
+  const joinTodo = useCallback((value: string): void => {
+    setTodos((prev) => {
+      return {
+        filter: prev.filter,
+        todos: prev.todos.concat({
           id: idkey(value),
           todo: value,
           complete: false,
-          display: getFilter !== Filter.completed,
-        })
-      );
-    },
-    [getFilter]
-  );
+          display: prev.filter !== Filter.completed,
+        }),
+      };
+    });
+  }, []);
   const checkTodo = useCallback((id: string): void => {
-    setTodos((prev) =>
-      prev.map((todo) => {
-        if (todo.id === id) {
-          todo.complete = !todo.complete;
-        }
-        return todo;
-      })
-    );
+    setTodos((prev) => {
+      return {
+        filter: prev.filter,
+        todos: prev.todos.map((todo) => {
+          if (todo.id === id) {
+            todo.complete = !todo.complete;
+          }
+          return todo;
+        }),
+      };
+    });
   }, []);
   const filterTodo = useCallback((filter: Filter): void => {
-    setFilter(filter);
-    setTodos((prev) =>
-      prev.map((todo) => {
-        if (filter === Filter.active) {
-          todo.display = !todo.complete;
-        } else if (filter === Filter.completed) {
-          todo.display = todo.complete;
-        } else {
-          todo.display = true;
-        }
-        return todo;
-      })
-    );
+    setTodos((prev) => {
+      return {
+        filter: filter,
+        todos: prev.todos.map((todo) => {
+          if (filter === Filter.active) {
+            todo.display = !todo.complete;
+          } else if (filter === Filter.completed) {
+            todo.display = todo.complete;
+          } else {
+            todo.display = true;
+          }
+          return todo;
+        }),
+      };
+    });
   }, []);
   const deleteTodo = useCallback((id: string): void => {
     setTodos((prev) => {
-      return prev.filter((todo) => todo.id !== id);
+      return {
+        filter: prev.filter,
+        todos: prev.todos.filter((todo) => todo.id !== id),
+      };
     });
   }, []);
   const clearTodos = useCallback((): void => {
     setTodos((prev) => {
-      return prev.filter((todo) => todo.complete !== true);
+      return {
+        filter: prev.filter,
+        todos: prev.todos.filter((todo) => todo.complete !== true),
+      };
     });
   }, []);
   return {
     getTodos,
-    getFilter,
     joinTodo,
     checkTodo,
     filterTodo,
