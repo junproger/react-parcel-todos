@@ -14,10 +14,10 @@ import { Todos } from '../view/Todos';
 import { idkey } from '../../helpers/idkey';
 
 export const Main: FC = () => {
-  const { getTodos, getFilter, joinTodo, checkTodo, filterTodo, deleteTodo, clearTodos } = useStateTodos();
+  const { getTodos, joinTodo, checkTodo, filterTodo, deleteTodo, clearTodos } = useStateTodos();
   const isUniqueTodo = useCallback(
     (value: string): boolean => {
-      if (getTodos.some((todo) => todo.id === idkey(value))) {
+      if (getTodos.todos.some((todo) => todo.id === idkey(value))) {
         return false;
       }
       return true;
@@ -25,15 +25,15 @@ export const Main: FC = () => {
     [getTodos]
   );
   const todosLength: TodosLength = {
-    total: getTodos.length,
-    active: getTodos.filter((item) => item.complete === false).length,
-    completed: getTodos.filter((item) => item.complete === true).length,
+    total: getTodos.todos.length,
+    active: getTodos.todos.filter((item) => item.complete === false).length,
+    completed: getTodos.todos.filter((item) => item.complete === true).length,
   };
   return (
     <main className={styles['main']}>
       <Join callback={joinTodo} uniquely={isUniqueTodo} />
-      <Todos alltodos={getTodos} checking={checkTodo} deletion={deleteTodo} />
-      <Control filter={getFilter} todosnum={todosLength} filtering={filterTodo} clearing={clearTodos} />
+      <Todos alltodos={getTodos.todos} checking={checkTodo} deletion={deleteTodo} />
+      <Control filter={getTodos.filter} todosnum={todosLength} filtering={filterTodo} clearing={clearTodos} />
     </main>
   );
 };
