@@ -22,7 +22,7 @@ export const Main: FC = () => {
       }
       return true;
     },
-    [getTodos]
+    [getTodos.todos]
   );
   const todosLength: TodosLength = {
     total: getTodos.todos.length,
