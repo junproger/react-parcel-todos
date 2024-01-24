@@ -11,7 +11,7 @@ export interface ItemProp extends ITodo {
   deletion: (id: string) => void;
 }
 
-const memoItem: FC<ItemProp> = ({ id, todo, complete, checking, deletion }) => {
+const ItemMemo: FC<ItemProp> = ({ id, todo, complete, checking, deletion }) => {
   logging('TODO-ITEM is rendered', id);
   return (
     <div className={styles['item']}>
@@ -40,4 +40,4 @@ const memoItem: FC<ItemProp> = ({ id, todo, complete, checking, deletion }) => {
   );
 };
 
-export const Item = memo<ItemProp>(memoItem);
+export const Item = memo<ItemProp>(ItemMemo);
