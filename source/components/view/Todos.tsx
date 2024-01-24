@@ -5,6 +5,8 @@ import * as styles from './todos.module.css';
 import { ITodo } from '../../types/ITodo';
 import { Item } from '../control/Item';
 
+import { logging } from '../../utils/logging';
+
 export interface TodosProp {
   alltodos: ITodo[];
   checking: (id: string) => void;
@@ -12,6 +14,7 @@ export interface TodosProp {
 }
 
 export const Todos: FC<TodosProp> = ({ alltodos, checking, deletion }) => {
+  logging('ALL-TODOS is rendered');
   return (
     <div className={styles['todos']}>
       {alltodos.length > 0 ? (
