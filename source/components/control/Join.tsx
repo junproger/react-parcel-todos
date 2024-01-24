@@ -11,7 +11,7 @@ export interface JoinProp {
   uniquely: (value: string) => boolean;
 }
 
-const memoJoin: FC<JoinProp> = ({ callback, uniquely }) => {
+const JoinMemo: FC<JoinProp> = ({ callback, uniquely }) => {
   const { refInput, keyDownHandler } = useJoinTodo(callback, uniquely);
   logging('JOIN-TODO is rendered');
   return (
@@ -31,4 +31,4 @@ const memoJoin: FC<JoinProp> = ({ callback, uniquely }) => {
   );
 };
 
-export const Join = memo(memoJoin);
+export const Join = memo(JoinMemo);
